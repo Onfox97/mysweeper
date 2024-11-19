@@ -1,0 +1,4 @@
+{
+"backgroundSize":{"x":1.0,"y":1.0},
+"backgroundSpeed":0.1,
+"backgroundZoomSpeed":0.5}
