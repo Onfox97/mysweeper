@@ -2514,7 +2514,7 @@ GameObject:
   - component: {fileID: 1112813958}
   - component: {fileID: 1112813957}
   m_Layer: 5
-  m_Name: B_StartNewGame (1)
+  m_Name: B_QuitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

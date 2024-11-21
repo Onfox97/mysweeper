@@ -45,8 +45,10 @@ public class SpriteLoaderMaster : MonoBehaviour
     void Start()
     {
         loadDirectories();
-        setTiles();
         loadConfig();
+        setTiles();
+        
+        dropdown.value = loadedSpriteSet;
     }
     void loadDirectories()
     {
@@ -123,10 +125,8 @@ public class SpriteLoaderMaster : MonoBehaviour
     }
     public void changeSprites()
     {
-
         loadedSpriteSet = dropdown.value;
 
-        setTiles();
     }
 }
 

@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -51,10 +52,6 @@ public class Minefield : MonoBehaviour
         if(!game_death && !game_won && !game_stopped)
         {
             Vector3Int mousePosition = getMousePoos();
-            if(Input.GetMouseButtonDown(0))
-            {
-
-            }
             if(Input.GetMouseButtonUp(0))
             {
                 Uncover(mousePosition.x,mousePosition.y);
@@ -207,10 +204,11 @@ public class Minefield : MonoBehaviour
     {
         for(int i = 0; i < mine_count;i++)
         {   
-            Vector3Int poos = GetRandomMinePoos();
+            Vector3Int poos = GetRandomMinePoos_FIXED();
 
             SetTile(poos.x,poos.y,tilemap_field,tile_mine);
             mine_positions.Add(poos);
+            
         }
     }
     void GenerateNumbers()
@@ -294,6 +292,27 @@ public class Minefield : MonoBehaviour
             if(!foundMatch) yesSir = true;
         }
 
+        return minePoos;
+        
+    }
+    Vector3Int GetRandomMinePoos_FIXED()
+    {
+        
+        Vector3Int minePoos = new Vector3Int();
+
+        int x = Random.Range(0,field_sizeX);
+        int y = Random.Range(0,field_sizeY);
+
+        minePoos = new Vector3Int(x,y,0);
+        
+        while(mine_positions.Contains(minePoos) ||minePoos == game_startPosition)
+        {
+            x = Random.Range(0,field_sizeX);
+            y = Random.Range(0,field_sizeY);
+
+            minePoos = new Vector3Int(x,y,0);
+        }
+           
         return minePoos;
         
     }

@@ -21,7 +21,7 @@ public class NewGameUI : MonoBehaviour
     {
         int newSizeX = int.Parse(inputField_sizeX.text);
 
-        if(newSizeX != 0)
+        if(newSizeX != 1)
         {
             Minefield.field_sizeX = newSizeX;
         }
@@ -31,7 +31,7 @@ public class NewGameUI : MonoBehaviour
     public void OnValueChange_Y()
     {
         int newSizeY = int.Parse(inputField_sizeY.text);
-        if(newSizeY != 0)
+        if(newSizeY != 1)
         {
             Minefield.field_sizeY = newSizeY;
         }
@@ -42,7 +42,13 @@ public class NewGameUI : MonoBehaviour
     {
         int newMineCount = int.Parse(inputField_mineCount.text);
 
-        Minefield.mine_count = newMineCount;
+        int maxMines = (Minefield.field_sizeX * Minefield.field_sizeY)-1;
+        if(newMineCount < maxMines)
+        {
+            Minefield.mine_count = newMineCount;
+        }
+        else Minefield.mine_count = maxMines;
+        
         Debug.Log(newMineCount);
     }
 
